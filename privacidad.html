@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Política de Privacidad | Bunny Cure</title>
+      <link rel="icon" type="image/png" href="img/logo.png">
+      <!-- Tailwind CSS -->
+      <script src="https://cdn.tailwindcss.com"></script>
+      <!-- Fuentes -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+      <!-- Iconos -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      <!-- Tailwind Config -->
+      <script>
+         tailwind.config = {
+             theme: {
+                 extend: {
+                     colors: {
+                         'paper': '#FDFCF8',
+                         'sand': '#F2EBE0',
+                         'beige': '#E6E2DD',
+                         'cocoa': '#5D534A',
+                         'cocoa-light': '#8C8279',
+                         'gold-mute': '#Ceb49b',
+                     },
+                     fontFamily: {
+                         serif: ['"Playfair Display"', 'serif'],
+                         sans: ['"Lato"', 'sans-serif'],
+                     },
+                 }
+             }
+         }
+      </script>
+      <style>
+         body {
+            font-family: 'Lato', sans-serif;
+            color: #5D534A;
+            overflow-x: hidden;
+            background-color: #FDFCF8;
+         }
+         h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            color: #5D534A;
+         }
+         /* Textura de papel */
+         .texture-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.5;
+         }
+         /* Navegación */
+         nav {
+            backdrop-filter: blur(12px);
+            background: rgba(253, 252, 248, 0.85);
+            border-bottom: 1px solid rgba(230, 226, 221, 0.5);
+         }
+         nav a {
+            position: relative;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+         }
+         nav a::after {
+            content: '';
+            position: absolute;
+            width: 0; height: 1px; bottom: -4px; left: 50%;
+            background-color: #Ceb49b;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+         }
+         nav a:hover { color: #Ceb49b; }
+         nav a:hover::after { width: 100%; }
+
+         /* Sección hero pequeña */
+         .hero-small {
+            background: linear-gradient(135deg, #F2EBE0 0%, #E6E2DD 50%, #FDFCF8 100%);
+            border-bottom: 1px solid #E6E2DD;
+         }
+
+         /* Cards de secciones */
+         .policy-card {
+            background: white;
+            border: 1px solid #E6E2DD;
+            border-radius: 1rem;
+            transition: box-shadow 0.3s ease, transform 0.2s ease;
+         }
+         .policy-card:hover {
+            box-shadow: 0 8px 30px rgba(93, 83, 74, 0.08);
+            transform: translateY(-2px);
+         }
+
+         /* Línea decorativa */
+         .divider-line {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #CEB49B, transparent);
+         }
+
+         /* Número de sección */
+         .section-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #E6E2DD;
+            line-height: 1;
+            user-select: none;
+         }
+
+         /* WhatsApp float */
+         .whatsapp-float {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+         }
+
+         /* Animación de entrada */
+         @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+         }
+         .fade-up {
+            animation: fadeUp 0.6s ease both;
+         }
+         .fade-up:nth-child(1) { animation-delay: 0.1s; }
+         .fade-up:nth-child(2) { animation-delay: 0.2s; }
+         .fade-up:nth-child(3) { animation-delay: 0.3s; }
+         .fade-up:nth-child(4) { animation-delay: 0.4s; }
+         .fade-up:nth-child(5) { animation-delay: 0.5s; }
+         .fade-up:nth-child(6) { animation-delay: 0.6s; }
+         .fade-up:nth-child(7) { animation-delay: 0.7s; }
+         .fade-up:nth-child(8) { animation-delay: 0.8s; }
+      </style>
+   </head>
+   <body class="bg-paper">
+
+      <!-- Textura -->
+      <div class="texture-overlay"></div>
+
+      <!-- Navegación -->
+      <nav class="fixed top-0 w-full z-50 py-4 px-6 md:px-12 flex items-center justify-between">
+         <a href="index.html" class="font-serif text-2xl font-bold text-cocoa tracking-wide">
+            Bunny Cure
+         </a>
+         <a href="index.html" class="text-cocoa-light hover:text-gold-mute transition-colors text-sm flex items-center gap-2">
+            <i class="fa-solid fa-arrow-left text-xs"></i>
+            Volver al inicio
+         </a>
+      </nav>
+
+      <!-- Hero pequeño -->
+      <section class="hero-small pt-32 pb-16 px-6 text-center">
+         <div class="max-w-2xl mx-auto">
+            <p class="text-gold-mute text-xs uppercase tracking-[0.3em] mb-3 font-sans">Bunny Cure</p>
+            <h1 class="text-5xl md:text-6xl font-serif font-bold text-cocoa mb-4 leading-tight">
+               Política de<br><em class="italic font-normal">Privacidad</em>
+            </h1>
+            <div class="divider-line my-6 max-w-xs mx-auto"></div>
+            <p class="text-cocoa-light text-sm tracking-wide">Última actualización: 7 de marzo de 2026</p>
+         </div>
+      </section>
+
+      <!-- Contenido principal -->
+      <main class="max-w-3xl mx-auto px-6 py-16">
+
+         <!-- Intro -->
+         <div class="fade-up mb-12 text-center">
+            <p class="text-cocoa leading-relaxed text-base md:text-lg">
+               En <strong class="font-semibold">Bunny Cure</strong>, valoramos tu privacidad y nos comprometemos a proteger tus datos personales. Esta política describe cómo recopilamos, usamos y protegemos la información que nos proporcionas al interactuar con nosotros a través de nuestras plataformas digitales, incluyendo Facebook e Instagram.
+            </p>
+         </div>
+
+         <div class="divider-line mb-12"></div>
+
+         <!-- Secciones -->
+         <div class="space-y-6">
+
+            <!-- 1 -->
+            <div class="policy-card p-8 fade-up">
+               <div class="flex items-start gap-5">
+                  <span class="section-num">01</span>
+                  <div class="flex-1">
+                     <h2 class="text-xl font-serif font-semibold text-cocoa mb-3">Responsable del tratamiento de datos</h2>
+                     <p class="text-cocoa-light leading-relaxed text-sm">
+                        <strong class="text-cocoa">Bunny Cure</strong> es responsable del tratamiento de tus datos personales. Puedes contactarnos a través de nuestras redes sociales <a href="https://instagram.com/bunny.cure" class="text-gold-mute hover:underline">@bunny.cure</a> en Instagram, o mediante WhatsApp al <a href="https://wa.me/56964499995" class="text-gold-mute hover:underline">+56 9 6449 9995</a>, ubicados en Chile.
+                     </p>
+                  </div>
+               </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="policy-card p-8 fade-up">
+               <div class="flex items-start gap-5">
+                  <span class="section-num">02</span>
+                  <div class="flex-1">
+                     <h2 class="text-xl font-serif font-semibold text-cocoa mb-3">Información que recopilamos</h2>
+                     <p class="text-cocoa-light leading-relaxed text-sm mb-4">
+                        Podemos recopilar los siguientes tipos de información cuando interactúas con nosotros:
+                     </p>
+                     <ul class="space-y-2 text-sm text-cocoa-light">
+                        <li class="flex items-start gap-2"><span class="text-gold-mute mt-1">✦</span><span><strong class="text-cocoa">Datos de contacto:</strong> nombre, número de teléfono, correo electrónico o perfil de redes sociales que compartes al contactarnos.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-gold-mute mt-1">✦</span><span><strong class="text-cocoa">Datos de interacción:</strong> mensajes, comentarios, reacciones y consultas que nos envías a través de Facebook, Instagram o WhatsApp.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-gold-mute mt-1">✦</span><span><strong class="text-cocoa">Datos de reserva:</strong> información necesaria para coordinar tus citas y servicios de nail art.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-gold-mute mt-1">✦</span><span><strong class="text-cocoa">Datos de navegación:</strong> información técnica recopilada automáticamente por las plataformas de Meta (Facebook/Instagram) según sus propias políticas.</span></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="policy-card p-8 fade-up">
+               <div class="flex items-start gap-5">
+                  <span class="section-num">03</span>
+                  <div class="flex-1">
+                     <h2 class="text-xl font-serif font-semibold text-cocoa mb-3">Finalidad del tratamiento</h2>
+                     <p class="text-cocoa-light leading-relaxed text-sm mb-4">Utilizamos tu información exclusivamente para:</p>
+                     <ul class="space-y-2 text-sm text-cocoa-light">
+                        <li class="flex items-start gap-2"><span class="text-gold-mute mt-1">✦</span><span>Responder tus consultas y coordinar citas o servicios.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-gold-mute mt-1">✦</span><span>Enviarte información sobre nuestros servicios, promociones y novedades (solo si lo has solicitado o aceptado).</span></li>
+                        <li class="flex items-start gap-2"><span class="text-gold-mute mt-1">✦</span><span>Mejorar la calidad de nuestros servicios y atención al cliente.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-gold-mute mt-1">✦</span><span>Gestionar nuestra comunidad en redes sociales de manera responsable.</span></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="policy-card p-8 fade-up">
+               <div class="flex items-start gap-5">
+                  <span class="section-num">04</span>
+                  <div class="flex-1">
+                     <h2 class="text-xl font-serif font-semibold text-cocoa mb-3">Uso de plataformas de Meta (Facebook e Instagram)</h2>
+                     <p class="text-cocoa-light leading-relaxed text-sm mb-3">
+                        Nuestra presencia en Facebook e Instagram está sujeta a las políticas de privacidad de Meta Platforms, Inc. Al interactuar con nuestra página o perfil, Meta puede recopilar datos según sus propios términos.
+                     </p>
+                     <p class="text-cocoa-light leading-relaxed text-sm mb-3">
+                        No compartimos, vendemos ni cedemos tus datos personales a terceros fuera de lo que es estrictamente necesario para operar nuestros servicios y cumplir con las plataformas que utilizamos.
+                     </p>
+                     <p class="text-cocoa-light text-sm">
+                        Para más información sobre cómo Meta maneja tus datos, visita: <a href="https://www.facebook.com/privacy/policy" target="_blank" class="text-gold-mute hover:underline">Política de privacidad de Meta</a>.
+                     </p>
+                  </div>
+               </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="policy-card p-8 fade-up">
+               <div class="flex items-start gap-5">
+                  <span class="section-num">05</span>
+                  <div class="flex-1">
+                     <h2 class="text-xl font-serif font-semibold text-cocoa mb-3">Conservación de datos</h2>
+                     <p class="text-cocoa-light leading-relaxed text-sm">
+                        Conservamos tus datos personales únicamente durante el tiempo necesario para cumplir con los fines descritos en esta política, o el tiempo que la ley chilena exija. Una vez que ya no sean necesarios, los eliminaremos de forma segura.
+                     </p>
+                  </div>
+               </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="policy-card p-8 fade-up">
+               <div class="flex items-start gap-5">
+                  <span class="section-num">06</span>
+                  <div class="flex-1">
+                     <h2 class="text-xl font-serif font-semibold text-cocoa mb-3">Tus derechos</h2>
+                     <p class="text-cocoa-light leading-relaxed text-sm mb-4">
+                        De acuerdo con la Ley N° 19.628 sobre Protección de la Vida Privada de Chile, tienes derecho a:
+                     </p>
+                     <ul class="space-y-2 text-sm text-cocoa-light">
+                        <li class="flex items-start gap-2"><span class="text-gold-mute mt-1">✦</span><span><strong class="text-cocoa">Acceso:</strong> conocer qué datos personales tuyos tenemos almacenados.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-gold-mute mt-1">✦</span><span><strong class="text-cocoa">Rectificación:</strong> corregir datos incorrectos o desactualizados.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-gold-mute mt-1">✦</span><span><strong class="text-cocoa">Cancelación:</strong> solicitar la eliminación de tus datos cuando ya no sean necesarios.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-gold-mute mt-1">✦</span><span><strong class="text-cocoa">Oposición:</strong> oponerte al tratamiento de tus datos para fines comerciales.</span></li>
+                     </ul>
+                     <p class="text-cocoa-light text-sm mt-4">
+                        Para ejercer cualquiera de estos derechos, contáctanos a través de <a href="https://instagram.com/bunny.cure" class="text-gold-mute hover:underline">@bunny.cure</a> o WhatsApp.
+                     </p>
+                  </div>
+               </div>
+            </div>
+
+            <!-- 7 -->
+            <div class="policy-card p-8 fade-up">
+               <div class="flex items-start gap-5">
+                  <span class="section-num">07</span>
+                  <div class="flex-1">
+                     <h2 class="text-xl font-serif font-semibold text-cocoa mb-3">Cookies y tecnologías de seguimiento</h2>
+                     <p class="text-cocoa-light leading-relaxed text-sm">
+                        Este sitio web no utiliza cookies propias de seguimiento. Sin embargo, las plataformas externas vinculadas (Instagram, Facebook, WhatsApp) pueden utilizar sus propias cookies y tecnologías de rastreo de acuerdo con las políticas de Meta. Al acceder a estas plataformas desde nuestra página, aceptas sus respectivos términos.
+                     </p>
+                  </div>
+               </div>
+            </div>
+
+            <!-- 8 -->
+            <div class="policy-card p-8 fade-up">
+               <div class="flex items-start gap-5">
+                  <span class="section-num">08</span>
+                  <div class="flex-1">
+                     <h2 class="text-xl font-serif font-semibold text-cocoa mb-3">Cambios en esta política</h2>
+                     <p class="text-cocoa-light leading-relaxed text-sm">
+                        Nos reservamos el derecho de actualizar esta Política de Privacidad en cualquier momento. Cualquier cambio será publicado en esta misma página con la fecha de actualización correspondiente. Te recomendamos revisarla periódicamente. El uso continuado de nuestros servicios implica la aceptación de los cambios realizados.
+                     </p>
+                  </div>
+               </div>
+            </div>
+
+         </div>
+
+         <!-- Divider -->
+         <div class="divider-line my-14"></div>
+
+         <!-- Contacto CTA -->
+         <div class="text-center fade-up">
+            <p class="text-cocoa-light text-sm mb-6">¿Tienes preguntas sobre tu privacidad? Estamos aquí para ayudarte.</p>
+            <a href="https://wa.me/56964499995" target="_blank"
+               class="inline-flex items-center gap-3 bg-cocoa text-paper px-8 py-4 rounded-full text-sm font-sans tracking-wider hover:bg-gold-mute transition-colors duration-300">
+               <i class="fa-brands fa-whatsapp text-lg"></i>
+               Contáctanos por WhatsApp
+            </a>
+         </div>
+
+      </main>
+
+      <!-- Footer -->
+      <footer class="bg-cocoa text-paper py-16 text-center relative overflow-hidden mt-8">
+         <div class="absolute top-0 left-0 w-full overflow-hidden leading-[0] rotate-180">
+            <svg class="relative block w-[calc(130%+1.3px)] h-[60px] md:h-[80px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+               <path d="M321.89,171.5C434.68,260.89,567.56,307.09,600.25,307.09s165.57-46.2,278.36-135.6c9.88-7.82,19.66-15.6,29.12-23.32,0,0-38.71,86.83-150.38,86.83S628.27,296.87,476.47,296.87,204.94,234.52,321.89,171.5Z" class="fill-[#F2EBE0]"></path>
+            </svg>
+         </div>
+         <div class="max-w-2xl mx-auto px-6 relative z-10">
+            <h3 class="text-5xl font-serif text-gold-mute mb-8">Bunny Cure</h3>
+            <div class="space-y-4 mb-10">
+               <p class="text-xl font-light tracking-wide">📍 Chile</p>
+               <a href="https://instagram.com/bunny.cure" target="_blank" class="inline-block text-gold-mute hover:text-white transition-colors text-lg border-b border-transparent hover:border-gold-mute pb-1">
+                  @bunny.cure
+               </a>
+            </div>
+            <div class="flex items-center justify-center gap-4 text-xs text-cocoa-light mb-4">
+               <a href="index.html" class="hover:text-gold-mute transition-colors uppercase tracking-widest">Inicio</a>
+               <span>·</span>
+               <span class="text-gold-mute uppercase tracking-widest">Privacidad</span>
+            </div>
+            <p class="text-cocoa-light text-xs uppercase tracking-[0.2em]">© 2026 Bunny Cure. Todos los derechos reservados.</p>
+         </div>
+      </footer>
+
+      <!-- Botón Flotante WhatsApp -->
+      <a href="https://wa.me/56964499995" target="_blank" class="whatsapp-float fixed bottom-8 right-8 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-xl z-50 transition-transform hover:scale-110">
+         <i class="fa-brands fa-whatsapp text-2xl"></i>
+      </a>
+
+   </body>
+</html>

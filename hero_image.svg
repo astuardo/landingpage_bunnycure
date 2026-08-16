@@ -1,0 +1,28 @@
+<svg width="1032" height="336" viewBox="0 0 1032 336" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo de Marca (Usando el color del front para mayor armonía) -->
+  <rect width="100%" height="100%" fill="#c9897a" />
+
+  <!-- Patrón decorativo de 10 sellos -->
+  <g fill="none" stroke="white" stroke-width="3" stroke-opacity="0.5">
+    <circle cx="150" cy="240" r="25" />
+    <circle cx="230" cy="240" r="25" />
+    <circle cx="310" cy="240" r="25" />
+    <circle cx="390" cy="240" r="25" />
+    <circle cx="470" cy="240" r="25" />
+    <circle cx="550" cy="240" r="25" />
+    <circle cx="630" cy="240" r="25" />
+    <circle cx="710" cy="240" r="25" />
+    <circle cx="790" cy="240" r="25" />
+    <circle cx="870" cy="240" r="25" />
+  </g>
+
+  <!-- Tipografía BunnyCure -->
+  <text x="50%" y="140" font-family="Segoe UI, Roboto, Arial" font-size="64" font-weight="bold" fill="white" text-anchor="middle" letter-spacing="2">
+    BunnyCure
+  </text>
+
+  <!-- Subtexto descriptivo -->
+  <text x="50%" y="185" font-family="Segoe UI, Roboto, Arial" font-size="20" fill="white" fill-opacity="0.8" text-anchor="middle" letter-spacing="1">
+    PROGRAMA DE FIDELIZACIÓN
+  </text>
+</svg>
