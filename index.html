@@ -1,517 +1,629 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
    <head>
       <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Bunny Cure | Arte en tus Manos</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+      <title>Bunny Cure | Arte en tus Manos & Salón Exclusivo</title>
+      <meta name="description" content="Bunny Cure - Estudio profesional de manicura, pedicura, kapping gel y nail art en Chile. Reserva tu cita online de forma rápida y sencilla.">
+      <meta name="theme-color" content="#FDFCF8">
       <link rel="icon" type="image/png" href="https://deyzgvsjtynmd9qg.public.blob.vercel-storage.com/logo.png">
+      <link rel="apple-touch-icon" href="https://deyzgvsjtynmd9qg.public.blob.vercel-storage.com/logo.png">
+
       <!-- Tailwind CSS -->
       <script src="https://cdn.tailwindcss.com"></script>
+
       <!-- Fuentes: Playfair Display (Serif/Editorial) + Lato (Sans/Limpia) -->
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-      <!-- Iconos -->
+      <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+      <!-- Iconos FontAwesome 6 -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
       <!-- Swiper CSS -->
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+      <!-- Luminous Lightbox CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/luminous-lightbox/2.3.2/luminous-basic.min.css">
+
       <!-- Configuración de Colores y Tipografía Personalizados -->
       <script>
          tailwind.config = {
              theme: {
                  extend: {
                      colors: {
-                         'paper': '#FDFCF8',       // Blanco Hueso / Papel
-                         'sand': '#F2EBE0',        // Arena Clara
-                         'beige': '#E6E2DD',       // Beige Suave
-                         'cocoa': '#5D534A',       // Marrón Cálido (Texto)
-                         'cocoa-light': '#8C8279', // Marrón Claro
-                         'gold-mute': '#Ceb49b',  // Dorado Terreo (Botones)
+                         'paper': '#FDFCF8',         // Blanco Hueso / Papel
+                         'sand': '#F2EBE0',          // Arena Clara
+                         'beige': '#E6E2DD',         // Beige Suave
+                         'cocoa': '#5D534A',         // Marrón Cálido (Texto)
+                         'cocoa-light': '#8C8279',   // Marrón Claro
+                         'gold-mute': '#CEB49B',     // Dorado Térreo
+                         'terracotta': '#C9897A',    // Terracota Primario de BunnyCure
+                         'terracotta-dark': '#7C3A2D', // Terracota Oscuro
+                         'terracotta-hover': '#B77768',// Terracota Hover
+                         'terracotta-light': '#FDF0EC',// Terracota Pastel de Fondo
                      },
                      fontFamily: {
                          serif: ['"Playfair Display"', 'serif'],
                          sans: ['"Lato"', 'sans-serif'],
                      },
                      borderRadius: {
-                         'arch': '50% 50% 0 0', // Arco superior
-                         'arch-lg': '30% 30% 0 0', // Arco sutil
+                         'arch': '50% 50% 0 0',
+                         'arch-lg': '30% 30% 0 0',
                      }
                  }
              }
          }
       </script>
+
       <style>
          /* --- ESTILOS CORE --- */
+         * {
+             -webkit-tap-highlight-color: transparent;
+         }
+
          body {
-         font-family: 'Lato', sans-serif;
-         color: #5D534A;
-         overflow-x: hidden;
-         background-color: #FDFCF8;
+             font-family: 'Lato', sans-serif;
+             color: #5D534A;
+             overflow-x: hidden;
+             background-color: #FDFCF8;
+             text-rendering: optimizeLegibility;
          }
+
          h1, h2, h3, h4, h5, h6 {
-         font-family: 'Playfair Display', serif;
-         color: #5D534A;
+             font-family: 'Playfair Display', serif;
          }
-         /* Textura de Papel (Grain) - Simula calidad premium */
+
+         .hero-title {
+             color: #FFFFFF !important;
+             text-shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
+         }
+
+         /* Selección de texto personalizada */
+         ::selection {
+             background-color: #C9897A;
+             color: #FFFFFF;
+         }
+
+         /* Barra de desplazamiento refinada */
+         ::-webkit-scrollbar {
+             width: 8px;
+         }
+         ::-webkit-scrollbar-track {
+             background: #FDFCF8;
+         }
+         ::-webkit-scrollbar-thumb {
+             background: #CEB49B;
+             border-radius: 4px;
+         }
+         ::-webkit-scrollbar-thumb:hover {
+             background: #C9897A;
+         }
+
+         /* Textura de Papel (Grain) */
          .texture-overlay {
-         position: fixed;
-         top: 0; left: 0; width: 100%; height: 100%;
-         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
-         pointer-events: none;
-         z-index: 9999;
-         opacity: 0.5;
+             position: fixed;
+             top: 0; left: 0; width: 100%; height: 100%;
+             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+             pointer-events: none;
+             z-index: 9999;
+             opacity: 0.5;
          }
+
          /* Loader */
          #loader {
-         position: fixed; inset: 0; background: #FDFCF8; z-index: 10000; 
-         display: flex; flex-direction: column; align-items: center; justify-content: center; 
-         transition: opacity 0.8s ease-out;
+             position: fixed; 
+             inset: 0; 
+             background: #FDFCF8; 
+             z-index: 10000; 
+             display: flex; 
+             flex-direction: column; 
+             align-items: center; 
+             justify-content: center; 
+             transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
          }
-         .bunny-jump { font-size: 60px; animation: jump 0.6s infinite alternate; }
-         @keyframes jump { from { transform: translateY(0); } to { transform: translateY(-15px); } }
-         /* --- COMPONENTES --- */
-         /* Navegación Flotante */
+
+         /* Navegación Flotante con Glassmorphism */
          nav {
-         backdrop-filter: blur(12px);
-         background: rgba(253, 252, 248, 0.85);
-         border-bottom: 1px solid rgba(230, 226, 221, 0.5);
+             backdrop-filter: blur(14px);
+             -webkit-backdrop-filter: blur(14px);
+             background: rgba(253, 252, 248, 0.90);
+             border-bottom: 1px solid rgba(230, 226, 221, 0.6);
          }
-         nav a {
-         position: relative;
-         font-size: 0.95rem;
-         letter-spacing: 0.5px;
-         transition: color 0.3s;
+         nav a.nav-link {
+             position: relative;
+             font-size: 0.925rem;
+             letter-spacing: 0.5px;
+             transition: color 0.3s;
          }
-         nav a::after {
-         content: '';
-         position: absolute;
-         width: 0; height: 1px; bottom: -4px; left: 50%;
-         background-color: #Ceb49b;
-         transition: all 0.3s ease;
-         transform: translateX(-50%);
+         nav a.nav-link::after {
+             content: '';
+             position: absolute;
+             width: 0; 
+             height: 1.5px; 
+             bottom: -4px; 
+             left: 50%;
+             background-color: #C9897A;
+             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+             transform: translateX(-50%);
          }
-         nav a:hover { color: #Ceb49b; }
-         nav a:hover::after { width: 100%; }
-         /* Hero Section con Arco */
-         .hero-arch {
-         /* Forma de pan/dona arqueada abajo */
-         border-radius: 0 0 40% 40%; 
-         /* Opcional: Arco superior si se prefiere */
+         nav a.nav-link:hover { 
+             color: #C9897A; 
          }
-         /* Estilos para el Lightbox (Luminous) - CORREGIDO */
-         /* Fondo transparente con opacidad suave */
-         /* Fondo translucido y centrado */
-         /* Fondo translúcido con blur y centrado flex */
-         
-/* Lightbox overlay reestructurado para centrado absoluto */
-.lum-lightbox {
-  position: fixed !important;
-  inset: 0 !important;
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-  background: rgba(253, 252, 248, 0.9) !important;
-  backdrop-filter: blur(8px);
-  z-index: 10000 !important;
-  padding: 2rem;
-  overflow: hidden;
-}
-
-/* Contenedor de la imagen con límites y centrado flex */
-.lum-img-wrapper {
-  max-width: 85vw !important;
-  max-height: 80vh !important;
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-  background: white;
-  border-radius: 1rem;
-  box-shadow: 0 20px 50px rgba(93, 83, 74, 0.15);
-  position: relative;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-/* Imagen responsive y centrada */
-.lum-img {
-  max-width: 100% !important;
-  max-height: 100% !important;
-  object-fit: contain !important;
-  border-radius: 1rem;
-  display: block;
-  margin: auto !important;
-}
-
-/* Botón cerrar visible y con buena posición */
-.lum-close {
-  position: fixed !important;
-  top: 1.5rem !important;
-  right: 1.5rem !important;
-  font-size: 2.8rem !important;
-  color: #5D534A !important;
-  background: rgba(255 255 255 / 0.9);
-  border-radius: 50%;
-  width: 3.6rem;
-  height: 3.6rem;
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(93, 83, 74, 0.25);
-  transition: background-color 0.3s ease;
-  z-index: 11000 !important;
-  user-select: none;
-}
-.lum-close:hover {
-  background-color: #CEB49B;
-  color: white !important;
-}
-
-/* Flechas navegación clásicas y alineadas */
-.lum-arrow {
-  position: fixed !important;
-  top: 50% !important;
-  transform: translateY(-50%);
-  font-size: 3rem !important;
-  cursor: pointer;
-  color: #5D534A !important;
-  background: rgba(255 255 255 / 0.9);
-  border-radius: 50%;
-  width: 3.8rem;
-  height: 3.8rem;
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 12px rgba(93, 83, 74, 0.25);
-  transition: background-color 0.3s ease;
-  z-index: 11000 !important;
-  opacity: 0.95;
-  user-select: none;
-}
-.lum-arrow:hover {
-  background-color: #CEB49B;
-  color: white !important;
-}
-.lum-arrow.lum-arrow--left {
-  left: 2rem !important;
-}
-.lum-arrow.lum-arrow--right {
-  right: 2rem !important;
-}
-
-/* Caption centrado al pie */
-.lum-caption {
-  position: fixed !important;
-  bottom: 2rem !important;
-  left: 50% !important;
-  transform: translateX(-50%);
-  max-width: 95vw;
-  color: #5D534A;
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  background: rgba(253, 252, 248, 0.85);
-  padding: 0.4rem 1.2rem;
-  border-radius: 1.25rem;
-  box-shadow: 0 4px 15px rgba(93, 83, 74, 0.12);
-  pointer-events: none;
-  user-select: none;
-  letter-spacing: 0.05em;
-  font-weight: 600;
-  text-align: center;
-}
-
-/* Cursor cambiar en overlay para cerrar */
-.lum-inner {
-  cursor: default;
-}
-.lum-img-wrapper {
-  cursor: auto;
-}
-		 
-         /* Botones */
-         .btn-premium {
-         background-color: #5D534A;
-         color: white;
-         border: 1px solid #5D534A;
-         transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+         nav a.nav-link:hover::after { 
+             width: 100%; 
          }
-         .btn-premium:hover {
-         background-color: transparent;
-         color: #5D534A;
-         letter-spacing: 1px;
+
+         /* Botones Premium */
+         .btn-primary {
+             background-color: #C9897A;
+             color: white;
+             box-shadow: 0 4px 14px 0 rgba(201, 137, 122, 0.35);
+             transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
          }
+         .btn-primary:hover {
+             background-color: #B77768;
+             transform: translateY(-2px);
+             box-shadow: 0 6px 20px 0 rgba(201, 137, 122, 0.45);
+         }
+
+         .btn-secondary {
+             background: rgba(255, 255, 255, 0.15);
+             color: white;
+             border: 1px solid rgba(255, 255, 255, 0.4);
+             backdrop-filter: blur(8px);
+             transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+         }
+         .btn-secondary:hover {
+             background: rgba(255, 255, 255, 0.28);
+             border-color: rgba(255, 255, 255, 0.7);
+             transform: translateY(-2px);
+         }
+
          /* Tarjetas de Servicio */
          .card-service {
-         transition: all 0.4s ease;
-         background: white;
+             transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+             background: white;
+             border: 1px solid rgba(230, 226, 221, 0.8);
          }
          .card-service:hover {
-         transform: translateY(-5px);
-         box-shadow: 0 20px 40px -10px rgba(93, 83, 74, 0.1);
+             transform: translateY(-4px);
+             border-color: rgba(201, 137, 122, 0.4);
+             box-shadow: 0 16px 32px -8px rgba(93, 83, 74, 0.08);
          }
-         /* WhatsApp Float */
+
+         /* Botón Flotante WhatsApp */
          .whatsapp-float {
-         animation: pulse 2s infinite;
-         background-color: #5D534A;
+             background-color: #25D366;
+             box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+             animation: whatsapp-pulse 2.5s infinite;
          }
-         @keyframes pulse { 
-         0% { box-shadow: 0 0 0 0 rgba(93, 83, 74, 0.6); } 
-         70% { box-shadow: 0 0 0 15px rgba(93, 83, 74, 0); } 
-         100% { box-shadow: 0 0 0 0 rgba(93, 83, 74, 0); } 
+         @keyframes whatsapp-pulse {
+             0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+             70% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+         }
+
+         /* Lightbox Personalizado */
+         .lum-lightbox {
+             background: rgba(253, 252, 248, 0.94) !important;
+             backdrop-filter: blur(10px) !important;
+             z-index: 10000 !important;
+         }
+         .lum-img-wrapper {
+             box-shadow: 0 25px 60px -10px rgba(93, 83, 74, 0.25) !important;
+             border-radius: 1.25rem !important;
+         }
+         .lum-close {
+             background: white !important;
+             color: #5D534A !important;
+             box-shadow: 0 4px 16px rgba(93, 83, 74, 0.15) !important;
+             border: 1px solid #E6E2DD !important;
+             transition: all 0.25s ease !important;
+         }
+         .lum-close:hover {
+             background: #C9897A !important;
+             color: white !important;
+             border-color: #C9897A !important;
+         }
+         .lum-arrow {
+             background: white !important;
+             color: #5D534A !important;
+             box-shadow: 0 4px 16px rgba(93, 83, 74, 0.15) !important;
+             border: 1px solid #E6E2DD !important;
+             transition: all 0.25s ease !important;
+         }
+         .lum-arrow:hover {
+             background: #C9897A !important;
+             color: white !important;
+             border-color: #C9897A !important;
          }
       </style>
    </head>
    <body class="antialiased">
       <!-- Textura de Fondo (Grain) -->
       <div class="texture-overlay"></div>
-      <!-- Loader -->
+
+      <!-- Loader de Página -->
       <div id="loader">
-         <div class="bunny-jump">🐰</div>
-         <p class="mt-4 font-serif text-gold-mute animate-pulse tracking-widest text-sm">Bunny Cure</p>
+         <div class="w-16 h-16 rounded-full bg-sand/60 flex items-center justify-center text-terracotta text-2xl shadow-sm mb-3">
+            <i class="fa-solid fa-sparkles animate-pulse"></i>
+         </div>
+         <p class="font-serif text-terracotta font-medium tracking-[0.25em] text-sm uppercase">Bunny Cure</p>
+         <div class="w-16 h-0.5 bg-beige mt-2 rounded-full overflow-hidden">
+            <div class="w-full h-full bg-terracotta animate-pulse"></div>
+         </div>
       </div>
+
       <!-- Navegación Minimalista -->
       <nav class="fixed w-full z-50 transition-all duration-300">
          <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Logo a la izquierda o centro -->
-            <a href="#" class="text-2xl font-serif font-bold tracking-tight text-cocoa">
-            Bunny Cure
+            <!-- Logo -->
+            <a href="#inicio" class="text-2xl font-serif font-bold tracking-tight text-cocoa hover:text-terracotta transition-colors flex items-center gap-1">
+               <span>Bunny Cure</span><span class="text-terracotta">.</span>
             </a>
-            <div class="hidden md:flex space-x-10 font-sans font-medium text-cocoa-light">
-               <a href="#inicio" class="hover:text-cocoa transition">Inicio</a>
-               <a href="#servicios" class="hover:text-cocoa transition">Servicios</a>
-               <a href="#galeria" class="hover:text-cocoa transition">Galería</a>
-               <a href="#contacto" class="hover:text-cocoa transition">Contacto</a>
-               <a href="https://reservar.bunnycure.cl" class="hover:text-cocoa transition">Reservar</a>
-               <a href="https://admin.bunnycure.cl" class="hover:text-cocoa transition">Admin</a>
+
+            <!-- Enlaces Desktop -->
+            <div class="hidden md:flex items-center space-x-8 font-sans font-medium text-cocoa-light">
+               <a href="#inicio" class="nav-link hover:text-cocoa transition">Inicio</a>
+               <a href="#servicios" class="nav-link hover:text-cocoa transition">Servicios</a>
+               <a href="#cuidados" class="nav-link hover:text-cocoa transition">Cuidados</a>
+               <a href="#galeria" class="nav-link hover:text-cocoa transition">Galería</a>
+               <a href="#contacto" class="nav-link hover:text-cocoa transition">Contacto</a>
+               <a href="https://admin.bunnycure.cl" class="nav-link hover:text-cocoa transition text-xs uppercase tracking-wider">Admin</a>
+               <a href="https://reservar.bunnycure.cl" class="btn-primary py-2.5 px-6 rounded-full text-xs uppercase tracking-wider font-semibold">
+                  Reservar Cita
+               </a>
             </div>
-            <!-- Botón hamburguesa para móvil -->
-            <button id="menu-toggle" class="md:hidden text-cocoa text-2xl p-2 focus:outline-none" aria-label="Abrir menú">
+
+            <!-- Botón menú móvil -->
+            <button id="menu-toggle" class="md:hidden text-cocoa text-2xl p-2 focus:outline-none focus:ring-2 focus:ring-terracotta/30 rounded-lg" aria-label="Abrir menú de navegación">
                <i id="menu-icon" class="fa-solid fa-bars"></i>
             </button>
          </div>
-         <!-- Menú móvil desplegable -->
-         <div id="mobile-menu" class="hidden md:hidden bg-paper/95 backdrop-blur-md border-t border-beige px-6 py-4 flex flex-col space-y-4 font-sans font-medium text-cocoa-light shadow-lg">
-            <a href="#inicio"    class="hover:text-cocoa transition py-2 border-b border-beige/50" onclick="closeMobileMenu()">Inicio</a>
-            <a href="#servicios" class="hover:text-cocoa transition py-2 border-b border-beige/50" onclick="closeMobileMenu()">Servicios</a>
-            <a href="#galeria"   class="hover:text-cocoa transition py-2 border-b border-beige/50" onclick="closeMobileMenu()">Galería</a>
-            <a href="#contacto"  class="hover:text-cocoa transition py-2 border-b border-beige/50" onclick="closeMobileMenu()">Contacto</a>
-            <a href="https://reservar.bunnycure.cl" class="hover:text-cocoa transition py-2 border-b border-beige/50" onclick="closeMobileMenu()">Reservar</a>
-            <a href="https://admin.bunnycure.cl"    class="hover:text-cocoa transition py-2" onclick="closeMobileMenu()">Admin</a>
+
+         <!-- Menú desplegable móvil -->
+         <div id="mobile-menu" class="hidden md:hidden bg-paper/98 backdrop-blur-md border-t border-beige px-6 py-6 flex flex-col space-y-4 font-sans font-medium text-cocoa-light shadow-xl">
+            <a href="#inicio" class="hover:text-cocoa transition py-2.5 border-b border-beige/60" onclick="closeMobileMenu()">Inicio</a>
+            <a href="#servicios" class="hover:text-cocoa transition py-2.5 border-b border-beige/60" onclick="closeMobileMenu()">Servicios</a>
+            <a href="#cuidados" class="hover:text-cocoa transition py-2.5 border-b border-beige/60" onclick="closeMobileMenu()">Cuidados</a>
+            <a href="#galeria" class="hover:text-cocoa transition py-2.5 border-b border-beige/60" onclick="closeMobileMenu()">Galería</a>
+            <a href="#contacto" class="hover:text-cocoa transition py-2.5 border-b border-beige/60" onclick="closeMobileMenu()">Contacto</a>
+            <a href="https://admin.bunnycure.cl" class="hover:text-cocoa transition py-2.5 border-b border-beige/60" onclick="closeMobileMenu()">Panel Admin</a>
+            <a href="https://reservar.bunnycure.cl" class="btn-primary py-3 rounded-full text-center text-xs uppercase tracking-widest font-semibold mt-2" onclick="closeMobileMenu()">
+               Reservar Cita Online
+            </a>
          </div>
       </nav>
-      <!-- Header / Hero Section -->
+
+      <!-- Header / Hero Section con Carrusel -->
       <header id="inicio" class="relative pt-20">
          <div class="swiper swiper-hero w-full h-[85vh] md:h-[90vh]">
             <div class="swiper-wrapper">
                <!-- Slide 1 -->
                <div class="swiper-slide relative flex items-center justify-center">
-                  <img src="https://deyzgvsjtynmd9qg.public.blob.vercel-storage.com/slide2.jpg" class="absolute w-full h-full object-cover object-center" alt="Arte en tus manos">
-                  <div class="absolute inset-0 bg-cocoa/30 mix-blend-multiply"></div>
-                  <div class="relative z-10 text-center text-white px-4 mt-10">
-                     <h1 class="text-5xl md:text-7xl font-serif font-bold mb-4 drop-shadow-lg">Arte en tus manos</h1>
-                     <p class="text-lg md:text-2xl font-light mb-10 tracking-wide opacity-90">Transforma tu estilo con nosotros</p>
-                     <a href="#servicios" class="btn-premium py-3 px-10 rounded-full text-sm uppercase tracking-widest">Ver Servicios</a>
+                  <img src="https://deyzgvsjtynmd9qg.public.blob.vercel-storage.com/slide2.jpg" class="absolute w-full h-full object-cover object-center" alt="Arte en tus manos - Bunny Cure">
+                  <!-- Capa de oscurecimiento y Scrim Gradiente para Contraste Garantizado WCAG AA -->
+                  <div class="absolute inset-0 bg-cocoa/30"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-cocoa/50 to-black/60"></div>
+                  
+                  <div class="relative z-10 text-center text-white px-6 max-w-4xl mx-auto mt-6 md:mt-10">
+                     <span class="inline-block uppercase tracking-[0.25em] text-xs sm:text-sm font-sans text-sand/90 font-medium mb-3 bg-black/25 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10">
+                        Estudio Profesional de Nail Art
+                     </span>
+                     <h1 class="hero-title text-4xl sm:text-5xl md:text-7xl font-serif font-bold mb-4 drop-shadow-lg leading-[1.15] md:leading-tight">
+                        Arte en tus manos
+                     </h1>
+                     <p class="text-base sm:text-lg md:text-2xl font-light mb-8 md:mb-10 tracking-wide text-white/95 max-w-xl mx-auto">
+                        Transforma tu estilo con el cuidado experto, higiene y diseño que tus uñas merecen.
+                     </p>
+                     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <a href="https://reservar.bunnycure.cl" class="w-full sm:w-auto btn-primary py-3.5 px-9 rounded-full text-xs sm:text-sm uppercase tracking-widest font-semibold text-center">
+                           Reservar Cita
+                        </a>
+                        <a href="#servicios" class="w-full sm:w-auto btn-secondary py-3.5 px-8 rounded-full text-xs sm:text-sm uppercase tracking-widest font-medium text-center">
+                           Ver Servicios
+                        </a>
+                     </div>
                   </div>
                </div>
+
                <!-- Slide 2 -->
                <div class="swiper-slide relative flex items-center justify-center">
-                  <img src="https://deyzgvsjtynmd9qg.public.blob.vercel-storage.com/slide3.jpg" class="absolute w-full h-full object-cover object-center" alt="Tu espacio de relax">
-                  <div class="absolute inset-0 bg-cocoa/30 mix-blend-multiply"></div>
-                  <div class="relative z-10 text-center text-white px-4 mt-10">
-                     <h1 class="text-5xl md:text-7xl font-serif font-bold mb-4 drop-shadow-lg">Tu espacio de relax</h1>
-                     <p class="text-lg md:text-2xl font-light mb-10 tracking-wide opacity-90">Calidad e higiene en cada detalle</p>
-                     <a href="https://reservar.bunnycure.cl" 
-                        target="_blank"
-                       class="bg-white text-cocoa font-bold py-3 px-8 rounded-full transition-all duration-300 hover:bg-gold-mute hover:text-white">
-                       Reservar Ahora
-                    </a>
+                  <img src="https://deyzgvsjtynmd9qg.public.blob.vercel-storage.com/slide3.jpg" class="absolute w-full h-full object-cover object-center" alt="Tu espacio de relax - Bunny Cure">
+                  <!-- Scrim Gradiente para Contraste Garantizado WCAG AA -->
+                  <div class="absolute inset-0 bg-cocoa/30"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-cocoa/50 to-black/60"></div>
+
+                  <div class="relative z-10 text-center text-white px-6 max-w-4xl mx-auto mt-6 md:mt-10">
+                     <span class="inline-block uppercase tracking-[0.25em] text-xs sm:text-sm font-sans text-sand/90 font-medium mb-3 bg-black/25 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10">
+                        Experiencia &amp; Bienestar
+                     </span>
+                     <h1 class="hero-title text-4xl sm:text-5xl md:text-7xl font-serif font-bold mb-4 drop-shadow-lg leading-[1.15] md:leading-tight">
+                        Tu espacio de relax
+                     </h1>
+                     <p class="text-base sm:text-lg md:text-2xl font-light mb-8 md:mb-10 tracking-wide text-white/95 max-w-xl mx-auto">
+                        Calidad premium, instrumental esterilizado y atención personalizada en cada detalle.
+                     </p>
+                     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <a href="https://reservar.bunnycure.cl" class="w-full sm:w-auto btn-primary py-3.5 px-9 rounded-full text-xs sm:text-sm uppercase tracking-widest font-semibold text-center">
+                           Reservar Ahora
+                        </a>
+                        <a href="#galeria" class="w-full sm:w-auto btn-secondary py-3.5 px-8 rounded-full text-xs sm:text-sm uppercase tracking-widest font-medium text-center">
+                           Ver Galería
+                        </a>
+                     </div>
                   </div>
                </div>
             </div>
-            <div class="swiper-pagination !bottom-10"></div>
+            <div class="swiper-pagination !bottom-8"></div>
          </div>
-         <!-- Forma de transición (Arco hacia abajo) -->
-         <div class="absolute bottom-0 w-full overflow-hidden leading-[0] z-20">
-            <svg class="relative block w-[calc(130%+1.3px)] h-[80px] md:h-[120px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+
+         <!-- Forma de transición arqueada suave -->
+         <div class="absolute bottom-0 w-full overflow-hidden leading-[0] z-20 pointer-events-none">
+            <svg class="relative block w-[calc(130%+1.3px)] h-[60px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                <path d="M321.89,171.5C434.68,260.89,567.56,307.09,600.25,307.09s165.57-46.2,278.36-135.6c9.88-7.82,19.66-15.6,29.12-23.32,0,0-38.71,86.83-150.38,86.83S628.27,296.87,476.47,296.87,204.94,234.52,321.89,171.5Z" class="fill-[#FDFCF8]"></path>
             </svg>
          </div>
       </header>
+
       <!-- Sección de Esencia -->
       <section class="py-24 px-4 bg-paper relative">
          <div class="max-w-4xl mx-auto text-center">
-            <span class="text-gold-mute font-serif italic text-lg">Nuestra Esencia</span>
+            <span class="text-terracotta font-serif italic text-lg tracking-wide">Nuestra Esencia</span>
             <h2 class="text-4xl md:text-5xl font-serif mt-3 mb-10 text-cocoa">Más que uñas, creamos arte</h2>
-            <div class="relative inline-block">
-               <div class="bg-sand/30 p-10 md:p-16 rounded-[3rem] shadow-sm border border-sand">
-                  <p class="text-lg md:text-xl text-cocoa-light leading-loose font-light">
-                     En <strong class="text-cocoa font-serif">Bunny Cure</strong>, no solo pintamos uñas; creamos pequeñas obras de arte que reflejan tu esencia. Nos apasiona el detalle y la salud de tus manos en un ambiente diseñado para ti.
+            <div class="relative inline-block w-full">
+               <div class="bg-sand/30 p-8 md:p-14 rounded-[2.5rem] shadow-sm border border-sand">
+                  <p class="text-lg md:text-xl text-cocoa-light leading-relaxed font-light">
+                     En <strong class="text-cocoa font-serif font-bold">Bunny Cure</strong>, creemos en la armonía entre el cuidado de la salud de tus uñas y la expresión estética de tu estilo personal. Cada sesión es una pausa dedicada a consentirte con materiales profesionales de alta gama en un ambiente pensado para tu confort.
                   </p>
                </div>
             </div>
          </div>
       </section>
+
       <!-- Servicios -->
       <section id="servicios" class="py-24 px-4 bg-paper relative overflow-hidden">
-         <!-- Imagen decorativa de fondo (Izquierda, difuminada) -->
-         <div class="absolute top-0 left-0 w-1/3 h-full opacity-70 pointer-events-none z-0 hidden md:block">
+         <!-- Imagen decorativa difuminada lateral -->
+         <div class="absolute top-0 left-0 w-1/3 h-full opacity-60 pointer-events-none z-0 hidden lg:block">
             <img src="https://deyzgvsjtynmd9qg.public.blob.vercel-storage.com/slide17.jpg" 
-               alt="Taller" 
-               class="w-full h-full object-cover rounded-r-[10rem] blur-sm transform -translate-x-10">
+                 alt="Detalle de Manicura" 
+                 class="w-full h-full object-cover rounded-r-[10rem] blur-sm transform -translate-x-12">
          </div>
+
          <div class="max-w-5xl mx-auto relative z-10">
-            <h2 class="text-4xl font-serif text-center mb-16 text-cocoa">Nuestros Servicios</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-               <!-- Tarjeta con más peso visual -->
-               <div class="card-service p-8 rounded-3xl flex justify-between items-center bg-white shadow-lg border-b-4 border-gold-mute">
+            <div class="text-center mb-16">
+               <span class="text-terracotta font-serif italic text-lg">Catálogo Profesional</span>
+               <h2 class="text-4xl md:text-5xl font-serif mt-2 text-cocoa">Nuestros Servicios</h2>
+               <p class="text-cocoa-light text-base mt-3 max-w-xl mx-auto">Selecciona el tratamiento ideal y asegura tu lugar en nuestro portal de reservas en tiempo real.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+               <!-- Servicio 1 -->
+               <div class="card-service p-7 rounded-3xl flex justify-between items-center bg-white shadow-sm hover:shadow-lg">
                   <div>
                      <h3 class="text-xl font-bold text-cocoa mb-1">Manicure + Brillo</h3>
-                     <p class="text-sm text-cocoa-light">Duración: 45 min</p>
+                     <p class="text-sm text-cocoa-light mb-2">Duración aprox: 45 min</p>
+                     <a href="https://reservar.bunnycure.cl" class="text-xs font-bold text-terracotta hover:text-terracotta-dark uppercase tracking-wider inline-flex items-center gap-1.5 transition-colors">
+                        Agendar <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                     </a>
                   </div>
                   <span class="text-2xl font-serif text-cocoa font-bold">$16.000</span>
                </div>
-               <div class="card-service p-8 rounded-3xl flex justify-between items-center bg-white shadow-lg border-b-4 border-gold-mute">
+
+               <!-- Servicio 2 -->
+               <div class="card-service p-7 rounded-3xl flex justify-between items-center bg-white shadow-sm hover:shadow-lg">
                   <div>
                      <h3 class="text-xl font-bold text-cocoa mb-1">Manicure Semi-Permanente</h3>
-                     <p class="text-sm text-cocoa-light">Duración: 60 min</p>
+                     <p class="text-sm text-cocoa-light mb-2">Duración aprox: 60 min</p>
+                     <a href="https://reservar.bunnycure.cl" class="text-xs font-bold text-terracotta hover:text-terracotta-dark uppercase tracking-wider inline-flex items-center gap-1.5 transition-colors">
+                        Agendar <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                     </a>
                   </div>
                   <span class="text-2xl font-serif text-cocoa font-bold">$21.000</span>
                </div>
-               <div class="card-service p-8 rounded-3xl flex justify-between items-center bg-white shadow-lg border-b-4 border-gold-mute">
+
+               <!-- Servicio 3 -->
+               <div class="card-service p-7 rounded-3xl flex justify-between items-center bg-white shadow-sm hover:shadow-lg">
                   <div>
                      <h3 class="text-xl font-bold text-cocoa mb-1">Manicure Men</h3>
-                     <p class="text-sm text-cocoa-light">Corte y cuidado</p>
+                     <p class="text-sm text-cocoa-light mb-2">Corte, limado y cuidado de cutículas</p>
+                     <a href="https://reservar.bunnycure.cl" class="text-xs font-bold text-terracotta hover:text-terracotta-dark uppercase tracking-wider inline-flex items-center gap-1.5 transition-colors">
+                        Agendar <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                     </a>
                   </div>
                   <span class="text-2xl font-serif text-cocoa font-bold">$18.000</span>
                </div>
-               <div class="card-service p-8 rounded-3xl flex justify-between items-center bg-white shadow-lg border-b-4 border-gold-mute">
+
+               <!-- Servicio 4 -->
+               <div class="card-service p-7 rounded-3xl flex justify-between items-center bg-white shadow-sm hover:shadow-lg">
                   <div>
                      <h3 class="text-xl font-bold text-cocoa mb-1">Kapping Gel</h3>
-                     <p class="text-sm text-cocoa-light">Protección fuerte</p>
+                     <p class="text-sm text-cocoa-light mb-2">Refuerzo y protección para uña natural</p>
+                     <a href="https://reservar.bunnycure.cl" class="text-xs font-bold text-terracotta hover:text-terracotta-dark uppercase tracking-wider inline-flex items-center gap-1.5 transition-colors">
+                        Agendar <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                     </a>
                   </div>
                   <span class="text-2xl font-serif text-cocoa font-bold">$23.000</span>
                </div>
-               <div class="card-service p-8 rounded-3xl flex justify-between items-center bg-white shadow-lg border-b-4 border-gold-mute">
+
+               <!-- Servicio 5 -->
+               <div class="card-service p-7 rounded-3xl flex justify-between items-center bg-white shadow-sm hover:shadow-lg">
                   <div>
                      <h3 class="text-xl font-bold text-cocoa mb-1">Soft Gel</h3>
-                     <p class="text-sm text-cocoa-light">Uñas postizas naturales</p>
+                     <p class="text-sm text-cocoa-light mb-2">Extensiones completas ultraligeras y naturales</p>
+                     <a href="https://reservar.bunnycure.cl" class="text-xs font-bold text-terracotta hover:text-terracotta-dark uppercase tracking-wider inline-flex items-center gap-1.5 transition-colors">
+                        Agendar <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                     </a>
                   </div>
                   <span class="text-2xl font-serif text-cocoa font-bold">$28.000</span>
                </div>
-               <div class="card-service p-8 rounded-3xl flex justify-between items-center bg-white shadow-lg border-b-4 border-gold-mute">
+
+               <!-- Servicio 6 -->
+               <div class="card-service p-7 rounded-3xl flex justify-between items-center bg-white shadow-sm hover:shadow-lg">
                   <div>
                      <h3 class="text-xl font-bold text-cocoa mb-1">Polygel Esculpido</h3>
-                     <p class="text-sm text-cocoa-light">Diseño único</p>
+                     <p class="text-sm text-cocoa-light mb-2">Estructura resistente y diseño a medida</p>
+                     <a href="https://reservar.bunnycure.cl" class="text-xs font-bold text-terracotta hover:text-terracotta-dark uppercase tracking-wider inline-flex items-center gap-1.5 transition-colors">
+                        Agendar <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                     </a>
                   </div>
                   <span class="text-2xl font-serif text-cocoa font-bold">$36.000</span>
                </div>
-               <div class="card-service p-8 rounded-3xl flex justify-between items-center bg-white shadow-lg border-b-4 border-gold-mute">
+
+               <!-- Servicio 7 -->
+               <div class="card-service p-7 rounded-3xl flex justify-between items-center bg-white shadow-sm hover:shadow-lg">
                   <div>
                      <h3 class="text-xl font-bold text-cocoa mb-1">Pedicure + Esmaltado</h3>
-                     <p class="text-sm text-cocoa-light">Relajación total</p>
+                     <p class="text-sm text-cocoa-light mb-2">Cuidado completo y acabado impecable</p>
+                     <a href="https://reservar.bunnycure.cl" class="text-xs font-bold text-terracotta hover:text-terracotta-dark uppercase tracking-wider inline-flex items-center gap-1.5 transition-colors">
+                        Agendar <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                     </a>
                   </div>
                   <span class="text-2xl font-serif text-cocoa font-bold">$23.000</span>
                </div>
-               <div class="card-service p-8 rounded-3xl flex justify-between items-center bg-white shadow-lg border-b-4 border-gold-mute">
+
+               <!-- Servicio 8 -->
+               <div class="card-service p-7 rounded-3xl flex justify-between items-center bg-white shadow-sm hover:shadow-lg">
                   <div>
                      <h3 class="text-xl font-bold text-cocoa mb-1">Pedicure + Spa</h3>
-                     <p class="text-sm text-cocoa-light">Tratamiento intensivo</p>
+                     <p class="text-sm text-cocoa-light mb-2">Exfoliación, hidratación profunda y relax</p>
+                     <a href="https://reservar.bunnycure.cl" class="text-xs font-bold text-terracotta hover:text-terracotta-dark uppercase tracking-wider inline-flex items-center gap-1.5 transition-colors">
+                        Agendar <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                     </a>
                   </div>
                   <span class="text-2xl font-serif text-cocoa font-bold">$26.000</span>
                </div>
             </div>
+
+            <!-- Banner CTA Principal -->
             <div class="text-center mt-12">
-               <p class="text-sm text-cocoa-light font-medium">* Precios sujetos a diseño de Nail Art</p>
-               <p class="text-sm text-cocoa-light font-medium mt-1">** Retiro de otro salón se cobra aparte</p>
+               <a href="https://reservar.bunnycure.cl" class="btn-primary inline-flex items-center gap-3 py-4 px-10 rounded-full text-xs sm:text-sm uppercase tracking-widest font-semibold shadow-xl">
+                  <span>Ver Fechas Disponibles &amp; Reservar</span>
+                  <i class="fa-solid fa-calendar-check"></i>
+               </a>
+               <p class="text-xs text-cocoa-light mt-4 font-medium">* Precios sujetos a complejidad de Nail Art &bull; Retiro de otro salón tiene recargo adicional</p>
             </div>
          </div>
       </section>
-      <!-- Cuidados (Post-Manicure) -->
-      <section class="py-24 px-4 bg-sand/20 relative overflow-hidden">
-         <!-- Imagen decorativa de fondo (Derecha, difuminada) -->
-         <div class="absolute top-0 right-0 w-1/3 h-full opacity-70 pointer-events-none z-0 hidden md:block">
-            <img src="https://deyzgvsjtynmd9qg.public.blob.vercel-storage.com/slide11.jpg" 
-               alt="Arte Uñas" 
-               class="w-full h-full object-cover rounded-l-[10rem] blur-sm transform translate-x-10">
-         </div>
+
+      <!-- Cuidados Post-Manicure (Iconografía Vectorial Consistente) -->
+      <section id="cuidados" class="py-24 px-4 bg-sand/20 relative overflow-hidden">
          <div class="max-w-6xl mx-auto relative z-10">
-            <h2 class="text-4xl font-serif text-center mb-16 text-cocoa">Cuidados Post-Manicure</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-               <!-- Tarjeta más sólida -->
-               <div class="bg-white p-8 rounded-3xl shadow-lg text-center hover:-translate-y-2 transition-transform duration-300 border-t-4 border-gold-mute">
-                  <div class="text-4xl mb-4 mt-2">💧</div>
-                  <h4 class="font-bold mb-2 text-lg text-cocoa">Hidratación</h4>
-                  <p class="text-sm text-cocoa-light">Usa aceite de cutícula diariamente.</p>
+            <div class="text-center mb-16">
+               <span class="text-terracotta font-serif italic text-lg">Recomendaciones Profesionales</span>
+               <h2 class="text-4xl md:text-5xl font-serif mt-2 text-cocoa">Cuidados Post-Manicure</h2>
+               <p class="text-cocoa-light text-base mt-3 max-w-xl mx-auto">Mantén tu esmaltado impecable y tus uñas fuertes por más semanas siguiendo estos simples hábitos.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+               <!-- Cuidado 1 -->
+               <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-md text-center transition-all duration-300 border border-sand">
+                  <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-terracotta-light flex items-center justify-center text-terracotta text-2xl shadow-sm">
+                     <i class="fa-solid fa-droplet"></i>
+                  </div>
+                  <h4 class="font-bold mb-2 text-lg text-cocoa">Hidratación Diaria</h4>
+                  <p class="text-sm text-cocoa-light leading-relaxed">Aplica aceite para cutículas todas las noches para nutrir la matriz.</p>
                </div>
-               <div class="bg-white p-8 rounded-3xl shadow-lg text-center hover:-translate-y-2 transition-transform duration-300 border-t-4 border-gold-mute">
-                  <div class="text-4xl mb-4 mt-2">🧤</div>
-                  <h4 class="font-bold mb-2 text-lg text-cocoa">Guantes</h4>
-                  <p class="text-sm text-cocoa-light">Para tareas de limpieza doméstica.</p>
+
+               <!-- Cuidado 2 -->
+               <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-md text-center transition-all duration-300 border border-sand">
+                  <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-terracotta-light flex items-center justify-center text-terracotta text-2xl shadow-sm">
+                     <i class="fa-solid fa-hand-sparkles"></i>
+                  </div>
+                  <h4 class="font-bold mb-2 text-lg text-cocoa">Uso de Guantes</h4>
+                  <p class="text-sm text-cocoa-light leading-relaxed">Protege tus uñas de químicos agresivos en labores domésticas.</p>
                </div>
-               <div class="bg-white p-8 rounded-3xl shadow-lg text-center hover:-translate-y-2 transition-transform duration-300 border-t-4 border-gold-mute">
-                  <div class="text-4xl mb-4 mt-2">🚫</div>
+
+               <!-- Cuidado 3 -->
+               <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-md text-center transition-all duration-300 border border-sand">
+                  <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-terracotta-light flex items-center justify-center text-terracotta text-2xl shadow-sm">
+                     <i class="fa-solid fa-shield-halved"></i>
+                  </div>
                   <h4 class="font-bold mb-2 text-lg text-cocoa">No Palanquear</h4>
-                  <p class="text-sm text-cocoa-light">No uses tus uñas como herramientas.</p>
+                  <p class="text-sm text-cocoa-light leading-relaxed">Evita usar las uñas como herramientas para abrir latas u objetos.</p>
                </div>
-               <div class="bg-white p-8 rounded-3xl shadow-lg text-center hover:-translate-y-2 transition-transform duration-300 border-t-4 border-gold-mute">
-                  <div class="text-4xl mb-4 mt-2">✂️</div>
-                  <h4 class="font-bold mb-2 text-lg text-cocoa">Retiro Pro</h4>
-                  <p class="text-sm text-cocoa-light">Nunca arranques el esmalte tú sola.</p>
+
+               <!-- Cuidado 4 -->
+               <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-md text-center transition-all duration-300 border border-sand">
+                  <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-terracotta-light flex items-center justify-center text-terracotta text-2xl shadow-sm">
+                     <i class="fa-solid fa-wand-magic-sparkles"></i>
+                  </div>
+                  <h4 class="font-bold mb-2 text-lg text-cocoa">Retiro Profesional</h4>
+                  <p class="text-sm text-cocoa-light leading-relaxed">Nunca desprendas el gel por la fuerza para no dañar las capas naturales.</p>
                </div>
             </div>
          </div>
       </section>
-      <!-- Galería con Formas de Arco -->
+
+      <!-- Galería con Formas Arqueadas & Lightbox Luminous -->
       <section id="galeria" class="py-24 bg-beige/20 overflow-hidden">
          <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-4xl font-serif text-center mb-16 text-cocoa">Galería de Diseños</h2>
+            <div class="text-center mb-16">
+               <span class="text-terracotta font-serif italic text-lg">Inspiración &amp; Estilo</span>
+               <h2 class="text-4xl md:text-5xl font-serif mt-2 text-cocoa">Galería de Diseños</h2>
+               <p class="text-cocoa-light text-base mt-3 max-w-xl mx-auto">Explora algunos de nuestros trabajos más recientes. Haz clic en cualquier imagen para verla en detalle.</p>
+            </div>
+
             <div class="swiper swiper-galeria px-4">
                <div class="swiper-wrapper pb-12">
                   <!-- Slide 1 -->
                   <div class="swiper-slide p-2">
-                     <!-- <a href="img/slide1.jpg?w=1200" class="zoom-img block relative group overflow-hidden shadow-lg"> -->
-                        <!-- Forma de Arco aplicada a la imagen -->
-                        <img src="https://deyzgvsjtynmd9qg.public.blob.vercel-storage.com/slide1.jpg" class="w-full h-80 md:h-96 object-cover transition-transform duration-700 group-hover:scale-105" 
-                           style="border-radius: 30% 30% 0 0;" alt="Nail Art 1">
-                        <div class="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-colors duration-300"></div>
+                     <a href="https://deyzgvsjtynmd9qg.public.blob.vercel-storage.com/slide1.jpg" class="zoom-img block relative group overflow-hidden shadow-md rounded-[30%_30%_0_0]">
+                        <img src="https://deyzgvsjtynmd9qg.public.blob.vercel-storage.com/slide1.jpg" class="w-full h-80 md:h-96 object-cover transition-transform duration-700 group-hover:scale-105" alt="Diseño Nail Art Bunny Cure 1">
+                        <div class="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                           <span class="bg-black/60 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        </div>
                      </a>
                   </div>
+
                   <!-- Slide 2 -->
                   <div class="swiper-slide p-2">
-                     <!-- <a href="img/slide2.jpg?w=1200" class="zoom-img block relative group overflow-hidden shadow-lg"> -->
-                        <img src="https://deyzgvsjtynmd9qg.public.blob.vercel-storage.com/slide2.jpg" class="w-full h-80 md:h-96 object-cover transition-transform duration-700 group-hover:scale-105" 
-                           style="border-radius: 30% 30% 0 0;" alt="Nail Art 2">
-                        <div class="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-colors duration-300"></div>
+                     <a href="https://deyzgvsjtynmd9qg.public.blob.vercel-storage.com/slide2.jpg" class="zoom-img block relative group overflow-hidden shadow-md rounded-[30%_30%_0_0]">
+                        <img src="https://deyzgvsjtynmd9qg.public.blob.vercel-storage.com/slide2.jpg" class="w-full h-80 md:h-96 object-cover transition-transform duration-700 group-hover:scale-105" alt="Diseño Nail Art Bunny Cure 2">
+                        <div class="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                           <span class="bg-black/60 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        </div>
                      </a>
                   </div>
+
                   <!-- Slide 3 -->
                   <div class="swiper-slide p-2">
-                     <!-- <a href="img/slide3.jpg?w=1200" class="zoom-img block relative group overflow-hidden shadow-lg"> -->
-                        <img src="https://deyzgvsjtynmd9qg.public.blob.vercel-storage.com/slide3.jpg" class="w-full h-80 md:h-96 object-cover transition-transform duration-700 group-hover:scale-105" 
-                           style="border-radius: 30% 30% 0 0;" alt="Nail Art 3">
-                        <div class="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-colors duration-300"></div>
+                     <a href="https://deyzgvsjtynmd9qg.public.blob.vercel-storage.com/slide3.jpg" class="zoom-img block relative group overflow-hidden shadow-md rounded-[30%_30%_0_0]">
+                        <img src="https://deyzgvsjtynmd9qg.public.blob.vercel-storage.com/slide3.jpg" class="w-full h-80 md:h-96 object-cover transition-transform duration-700 group-hover:scale-105" alt="Diseño Nail Art Bunny Cure 3">
+                        <div class="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                           <span class="bg-black/60 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        </div>
                      </a>
                   </div>
+
                   <!-- Slide 4 -->
                   <div class="swiper-slide p-2">
-                     <!-- <a href="img/slide4.jpeg?w=1200" class="zoom-img block relative group overflow-hidden shadow-lg"> -->
-                        <img src="https://deyzgvsjtynmd9qg.public.blob.vercel-storage.com/slide4.jpeg" class="w-full h-80 md:h-96 object-cover transition-transform duration-700 group-hover:scale-105" 
-                           style="border-radius: 30% 30% 0 0;" alt="Nail Art 4">
-                        <div class="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-colors duration-300"></div>
+                     <a href="https://deyzgvsjtynmd9qg.public.blob.vercel-storage.com/slide4.jpeg" class="zoom-img block relative group overflow-hidden shadow-md rounded-[30%_30%_0_0]">
+                        <img src="https://deyzgvsjtynmd9qg.public.blob.vercel-storage.com/slide4.jpeg" class="w-full h-80 md:h-96 object-cover transition-transform duration-700 group-hover:scale-105" alt="Diseño Nail Art Bunny Cure 4">
+                        <div class="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                           <span class="bg-black/60 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        </div>
                      </a>
                   </div>
+
                   <!-- Slide 5 -->
                   <div class="swiper-slide p-2">
-                     <!-- <a href="img/slide5.jpeg?w=800" class="zoom-img block relative group overflow-hidden shadow-lg"> -->
-                        <img src="https://deyzgvsjtynmd9qg.public.blob.vercel-storage.com/slide5.jpeg" class="w-full h-80 md:h-96 object-cover transition-transform duration-700 group-hover:scale-105" 
-                           style="border-radius: 30% 30% 0 0;" alt="Nail Art 5">
-                        <div class="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-colors duration-300"></div>
+                     <a href="https://deyzgvsjtynmd9qg.public.blob.vercel-storage.com/slide5.jpeg" class="zoom-img block relative group overflow-hidden shadow-md rounded-[30%_30%_0_0]">
+                        <img src="https://deyzgvsjtynmd9qg.public.blob.vercel-storage.com/slide5.jpeg" class="w-full h-80 md:h-96 object-cover transition-transform duration-700 group-hover:scale-105" alt="Diseño Nail Art Bunny Cure 5">
+                        <div class="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                           <span class="bg-black/60 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        </div>
                      </a>
                   </div>
-                  <!-- Video Slide -->
+
+                  <!-- Video Slide (Optimizada con preload y fallback) -->
                   <div class="swiper-slide p-2">
-                     <div class="relative rounded-[30%_30%_0_0] overflow-hidden shadow-lg h-80 md:h-96 group">
-                        <video src="https://deyzgvsjtynmd9qg.public.blob.vercel-storage.com/video1.mp4" class="w-full h-full object-cover" autoplay muted loop playsinline></video>
+                     <div class="relative rounded-[30%_30%_0_0] overflow-hidden shadow-md h-80 md:h-96 group bg-cocoa/10">
+                        <video src="https://deyzgvsjtynmd9qg.public.blob.vercel-storage.com/video1.mp4" 
+                               class="w-full h-full object-cover" 
+                               autoplay muted loop playsinline preload="metadata">
+                        </video>
                         <div class="absolute inset-0 bg-gold-mute/10 pointer-events-none"></div>
                      </div>
                   </div>
@@ -520,127 +632,150 @@
             </div>
          </div>
       </section>
+
       <!-- Footer / Contacto -->
       <footer id="contacto" class="bg-cocoa text-paper py-20 text-center relative overflow-hidden">
-         <!-- Decoración de arco en el footer -->
-         <div class="absolute top-0 left-0 w-full overflow-hidden leading-[0] rotate-180">
-            <svg class="relative block w-[calc(130%+1.3px)] h-[60px] md:h-[80px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+         <!-- Decoración de arco superior -->
+         <div class="absolute top-0 left-0 w-full overflow-hidden leading-[0] rotate-180 pointer-events-none">
+            <svg class="relative block w-[calc(130%+1.3px)] h-[50px] md:h-[70px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                <path d="M321.89,171.5C434.68,260.89,567.56,307.09,600.25,307.09s165.57-46.2,278.36-135.6c9.88-7.82,19.66-15.6,29.12-23.32,0,0-38.71,86.83-150.38,86.83S628.27,296.87,476.47,296.87,204.94,234.52,321.89,171.5Z" class="fill-[#F2EBE0]"></path>
             </svg>
          </div>
-         <div class="max-w-2xl mx-auto px-6 relative z-10">
-            <h3 class="text-5xl font-serif text-gold-mute mb-8">Bunny Cure</h3>
-            <div class="space-y-4 mb-10">
-               <p class="text-xl font-light tracking-wide">📍 Chile</p>
-               <a href="https://instagram.com/bunny.cure" target="_blank" class="inline-block text-gold-mute hover:text-white transition-colors text-lg border-b border-transparent hover:border-gold-mute pb-1">
-               @bunny.cure
+
+         <div class="max-w-2xl mx-auto px-6 relative z-10 pt-4">
+            <h3 class="text-4xl sm:text-5xl font-serif text-gold-mute mb-6 flex items-center justify-center gap-1">
+               <span>Bunny Cure</span><span class="text-terracotta">.</span>
+            </h3>
+            
+            <p class="text-sand/80 text-base max-w-md mx-auto mb-8 font-light">
+               Tu espacio de belleza y relajación. Agenda tu sesión online de manera directa o comunícate vía WhatsApp.
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center gap-6 mb-10 text-sand">
+               <a href="https://reservar.bunnycure.cl" class="text-sm font-semibold hover:text-white transition-colors underline underline-offset-4 decoration-terracotta">
+                  Portal de Reservas
                </a>
+               <span>&bull;</span>
+               <a href="https://instagram.com/bunny.cure" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold hover:text-white transition-colors flex items-center gap-1.5">
+                  <i class="fa-brands fa-instagram text-terracotta text-base"></i> @bunny.cure
+               </a>
+               <span>&bull;</span>
+               <span class="text-sm text-sand/80"><i class="fa-solid fa-location-dot text-terracotta mr-1"></i> Chile</span>
             </div>
-            <p class="text-cocoa-light text-xs uppercase tracking-[0.2em]">© 2026 Bunny Cure. Todos los derechos reservados.</p>
+
+            <p class="text-cocoa-light text-xs uppercase tracking-[0.2em]">
+               &copy; 2026 Bunny Cure. Todos los derechos reservados.
+            </p>
          </div>
       </footer>
-      <!-- Botón Flotante WhatsApp -->
-      <a href="https://wa.me/56964499995" target="_blank" class="whatsapp-float fixed bottom-8 right-8 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-xl z-50 transition-transform hover:scale-110">
-      <i class="fa-brands fa-whatsapp text-2xl"></i>
+
+      <!-- Botón Flotante WhatsApp Oficial con Animación Suave -->
+      <a href="https://wa.me/56964499995" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         aria-label="Contactar a Bunny Cure por WhatsApp"
+         class="whatsapp-float fixed bottom-6 right-6 sm:bottom-8 sm:right-8 text-white w-14 h-14 rounded-full flex items-center justify-center z-50 transition-transform hover:scale-110 active:scale-95">
+         <i class="fa-brands fa-whatsapp text-2xl"></i>
       </a>
-      <!-- Script Menú Móvil -->
-      <script>
-         const menuToggle = document.getElementById('menu-toggle');
-         const mobileMenu = document.getElementById('mobile-menu');
-         const menuIcon   = document.getElementById('menu-icon');
 
-         menuToggle.addEventListener('click', () => {
-            const isOpen = !mobileMenu.classList.contains('hidden');
-            if (isOpen) {
-               closeMobileMenu();
-            } else {
-               mobileMenu.classList.remove('hidden');
-               menuIcon.classList.replace('fa-bars', 'fa-xmark');
-            }
-         });
-
-         function closeMobileMenu() {
-            mobileMenu.classList.add('hidden');
-            menuIcon.classList.replace('fa-xmark', 'fa-bars');
-         }
-
-         // Cerrar menú al hacer scroll
-         window.addEventListener('scroll', () => {
-            if (!mobileMenu.classList.contains('hidden')) {
-               closeMobileMenu();
-            }
-         });
-      </script>
       <!-- Scripts -->
       <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/luminous-lightbox/2.3.2/luminous.min.js"></script>
       <script>
-         // Ocultar Loader
+         // Menú Móvil
+         const menuToggle = document.getElementById('menu-toggle');
+         const mobileMenu = document.getElementById('mobile-menu');
+         const menuIcon   = document.getElementById('menu-icon');
+
+         if (menuToggle && mobileMenu && menuIcon) {
+            menuToggle.addEventListener('click', () => {
+               const isOpen = !mobileMenu.classList.contains('hidden');
+               if (isOpen) {
+                  closeMobileMenu();
+               } else {
+                  mobileMenu.classList.remove('hidden');
+                  menuIcon.classList.replace('fa-bars', 'fa-xmark');
+               }
+            });
+         }
+
+         function closeMobileMenu() {
+            if (mobileMenu && menuIcon) {
+               mobileMenu.classList.add('hidden');
+               menuIcon.classList.replace('fa-xmark', 'fa-bars');
+            }
+         }
+
+         // Cerrar menú al hacer scroll
+         window.addEventListener('scroll', () => {
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+               closeMobileMenu();
+            }
+         }, { passive: true });
+
+         // Ocultar Loader de forma suave
          function hideLoader() {
-              const loader = document.getElementById('loader');
-              if (loader) {
-                  loader.style.opacity = '0';
-                  setTimeout(() => loader.style.display = 'none', 800);
-              }
-          }
-          
-          // Eventos de carga
-          window.addEventListener('load', hideLoader);
-          setTimeout(hideLoader, 3000); // Backup
-          
-          // Inicializar Swiper Hero
-          new Swiper(".swiper-hero", {
-              autoplay: { delay: 6000, disableOnInteraction: false },
-              loop: true,
-              effect: 'fade',
-              fadeEffect: { crossFade: true },
-              pagination: { 
-                 el: ".swiper-pagination", 
-                 clickable: true,
-                 renderBullet: function (index, className) {
-                   return '<span class="' + className + ' !bg-gold-mute !opacity-50 hover:!opacity-100 transition-opacity"></span>';
-                 }
-              },
-          });
-          
-          // Inicializar Swiper Galería
-          const swiperGal = new Swiper(".swiper-galeria", {
-              slidesPerView: 1,
-              spaceBetween: 30,
-              loop: true,
-              centeredSlides: true,
-              autoplay: { delay: 4000, disableOnInteraction: false },
-              pagination: { el: ".swiper-pagination", clickable: true },
-              breakpoints: {
-                  640: { slidesPerView: 2, centeredSlides: false },
-                  1024: { slidesPerView: 3, centeredSlides: false },
-              }
-          });
-          
-         // Inicializar Luminous (Lightbox) - CORREGIDO
-         // Seleccionamos todos los enlaces dentro de la galería
-         // Seleccionar todos los enlaces con clase .zoom-img dentro de #galeria
-         // Selecciona los enlaces con imágenes para zoom
-document.addEventListener("DOMContentLoaded", () => {
-  const galleryImages = document.querySelectorAll("#galeria a.zoom-img");
+            const loader = document.getElementById('loader');
+            if (loader) {
+               loader.style.opacity = '0';
+               setTimeout(() => {
+                  loader.style.display = 'none';
+               }, 600);
+            }
+         }
+         window.addEventListener('load', hideLoader);
+         setTimeout(hideLoader, 2500); // Respaldo por si hay retraso en red
 
-  if (galleryImages.length) {
-    const luminousGallery = new LuminousGallery(galleryImages, {
-      arrowNavigation: true,
-      closeOnScroll: true,
-      caption: trigger => trigger.querySelector('img').alt || '',
-    });
+         // Inicializar Swiper Hero
+         new Swiper(".swiper-hero", {
+            autoplay: { delay: 6000, disableOnInteraction: false },
+            loop: true,
+            effect: 'fade',
+            fadeEffect: { crossFade: true },
+            pagination: { 
+               el: ".swiper-pagination", 
+               clickable: true,
+               renderBullet: function (index, className) {
+                  return '<span class="' + className + ' !bg-white !opacity-60 hover:!opacity-100 transition-opacity"></span>';
+               }
+            },
+         });
 
-    // Permite cerrar haciendo clic fuera de la imagen (en overlay)
-    luminousGallery.lightboxes.forEach(lightboxInstance => {
-      lightboxInstance.overlay.addEventListener('click', e => {
-        if (e.target === lightboxInstance.overlay) {
-          lightboxInstance.close();
-        }
-      });
-    });
-  }
-});
+         // Inicializar Swiper Galería
+         new Swiper(".swiper-galeria", {
+            slidesPerView: 1,
+            spaceBetween: 24,
+            loop: true,
+            centeredSlides: true,
+            autoplay: { delay: 4000, disableOnInteraction: false },
+            pagination: { el: ".swiper-pagination", clickable: true },
+            breakpoints: {
+               640: { slidesPerView: 2, centeredSlides: false },
+               1024: { slidesPerView: 3, centeredSlides: false },
+            }
+         });
+
+         // Inicializar Luminous (Lightbox) para la galería
+         document.addEventListener("DOMContentLoaded", () => {
+            const galleryImages = document.querySelectorAll("#galeria a.zoom-img");
+            if (galleryImages.length && typeof LuminousGallery !== 'undefined') {
+               const luminousGallery = new LuminousGallery(galleryImages, {
+                  arrowNavigation: true,
+                  closeOnScroll: true,
+                  caption: trigger => trigger.querySelector('img')?.alt || 'Bunny Cure Nail Art',
+               });
+
+               luminousGallery.lightboxes.forEach(instance => {
+                  if (instance.overlay) {
+                     instance.overlay.addEventListener('click', (e) => {
+                        if (e.target === instance.overlay) {
+                           instance.close();
+                        }
+                     });
+                  }
+               });
+            }
+         });
       </script>
    </body>
 </html>
